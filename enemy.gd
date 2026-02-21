@@ -1,7 +1,6 @@
-extends Area2D
+extends CharacterBody2D
 
-var speed := 400
-var dir := Vector2.LEFT
+const bullet = preload("res://bullet.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -9,6 +8,17 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta: float) -> void:
-    position += speed*dir*delta
-    rotation += 0.1
+func _process(delta: float) -> void:
+    pass
+
+
+func _on_timer_timeout() -> void:
+    var new_bullet := bullet.instantiate()
+    get_parent().add_child(new_bullet)
+    new_bullet.position = position
+    new_bullet.dir = position.direction_to(get_tree().get_first_node_in_group("Player").position).rotated(randf_range(-0.2, 0.2))
+    
+
+
+func _on_mouse_entered() -> void:
+    print("hi")
