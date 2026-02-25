@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://do1e6b4pxh8an"]
+
+[ext_resource type="Texture2D" uid="uid://bnphu3r7a10fs" path="res://DemoGameAssets/tilemap.png" id="1_ba8gm"]
+[ext_resource type="Script" uid="uid://big241p3oe0a5" path="res://door.gd" id="1_v6xrn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v6xrn"]
+atlas = ExtResource("1_ba8gm")
+region = Rect2(17, 119, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0phs7"]
+atlas = ExtResource("1_ba8gm")
+region = Rect2(34, 102, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_50cdl"]
+atlas = ExtResource("1_ba8gm")
+region = Rect2(85, 119, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y5njw"]
+atlas = ExtResource("1_ba8gm")
+region = Rect2(102, 102, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ba8gm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v6xrn")
+}],
+"loop": true,
+"name": &"brickClosed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0phs7")
+}],
+"loop": true,
+"name": &"brickOpen",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_50cdl")
+}],
+"loop": true,
+"name": &"grayClosed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y5njw")
+}],
+"loop": true,
+"name": &"grayOpen",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ba8gm"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hun61"]
+size = Vector2(16, 28)
+
+[node name="door" type="Node2D" unique_id=1538870368]
+script = ExtResource("1_v6xrn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1024533836]
+sprite_frames = SubResource("SpriteFrames_ba8gm")
+animation = &"brickClosed"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=436304838]
+
+[node name="collisionHitbox" type="CollisionShape2D" parent="StaticBody2D" unique_id=1576245270]
+shape = SubResource("RectangleShape2D_ba8gm")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=396795592]
+
+[node name="interactHitbox" type="CollisionShape2D" parent="Area2D" unique_id=804006699]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_hun61")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
