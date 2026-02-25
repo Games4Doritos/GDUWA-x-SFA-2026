@@ -13,10 +13,12 @@ func _process(delta: float) -> void:
 
 
 func _on_timer_timeout() -> void:
-	var new_bullet := bullet.instantiate()
-	get_parent().add_child(new_bullet)
-	new_bullet.position = position
-	new_bullet.dir = position.direction_to(get_tree().get_first_node_in_group("Player").position).rotated(randf_range(-0.2, 0.2))
+	if get_tree().get_first_node_in_group("Player") != null:
+		if get_tree().get_first_node_in_group("Player").position.distance_to(position) < 500:
+			var new_bullet := bullet.instantiate()
+			get_parent().add_child(new_bullet)
+			new_bullet.position = position
+			new_bullet.dir = position.direction_to(get_tree().get_first_node_in_group("Player").position).rotated(randf_range(-0.2, 0.2))
 	
 
 

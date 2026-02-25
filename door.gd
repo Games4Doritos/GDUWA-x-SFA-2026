@@ -11,11 +11,13 @@ func _ready() -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body == get_tree().get_first_node_in_group("Player"):
+		get_node("Label").visible = true
 		playerTouching = true
 
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body == get_tree().get_first_node_in_group("Player"):
+		get_node("Label").visible = false
 		playerTouching = false
 
 func _input(event: InputEvent) -> void:

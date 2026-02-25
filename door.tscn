@@ -55,15 +55,17 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ba8gm"]
-size = Vector2(16, 16)
+size = Vector2(44, 47)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hun61"]
-size = Vector2(16, 28)
+size = Vector2(43, 94)
 
 [node name="door" type="Node2D" unique_id=1538870368]
 script = ExtResource("1_v6xrn")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1024533836]
+position = Vector2(0, -22.999996)
+scale = Vector2(2.6875, 2.75)
 sprite_frames = SubResource("SpriteFrames_ba8gm")
 animation = &"brickClosed"
 autoplay = "brickClosed"
@@ -71,16 +73,27 @@ autoplay = "brickClosed"
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=436304838]
 
 [node name="collisionHitbox" type="CollisionShape2D" parent="StaticBody2D" unique_id=1576245270]
+position = Vector2(0, -22.5)
 shape = SubResource("RectangleShape2D_ba8gm")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=396795592]
 
 [node name="interactHitbox" type="CollisionShape2D" parent="Area2D" unique_id=804006699]
-position = Vector2(0, 6)
+position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_hun61")
 
 [node name="enterTimer" type="Timer" parent="." unique_id=251890853]
-wait_time = 1.5
+wait_time = 0.5
+
+[node name="Label" type="Label" parent="." unique_id=576636376]
+visible = false
+offset_left = -47.0
+offset_top = -62.0
+offset_right = 49.0
+offset_bottom = -49.0
+theme_override_font_sizes/font_size = 8
+text = "Press 'E' to change level"
+horizontal_alignment = 1
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
