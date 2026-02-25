@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cbp6b7j7gh6k8"]
+[gd_scene format=3 uid="uid://cbp6b7j7gh6k8"]
 
 [ext_resource type="Texture2D" uid="uid://c0f6sqqv7c24g" path="res://DemoGameAssets/characters/tile_0097.png" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://8nsannvtev6i" path="res://player.gd" id="1_onrkg"]
@@ -71,36 +71,34 @@ _data = {
 &"attack": SubResource("Animation_i3pqv")
 }
 
-[node name="Player" type="CharacterBody2D" groups=["Player"]]
+[node name="Player" type="CharacterBody2D" unique_id=1397377702 groups=["Player"]]
 script = ExtResource("1_onrkg")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1071053481]
 scale = Vector2(2, 2)
 texture = ExtResource("1_4flbx")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=273431648]
 position = Vector2(0, 3)
 scale = Vector2(2, 2)
 shape = SubResource("CircleShape2D_onrkg")
 
-[node name="Sword" type="Area2D" parent="."]
+[node name="Sword" type="Area2D" parent="." unique_id=1872197659]
 position = Vector2(10, 8)
 rotation = 0.349066
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="Sword"]
+[node name="Sprite2D" type="Sprite2D" parent="Sword" unique_id=892292280]
 position = Vector2(0, -10)
 scale = Vector2(2, 2)
 texture = ExtResource("3_i3pqv")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sword"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sword" unique_id=951288625]
 position = Vector2(0, -11)
 shape = SubResource("RectangleShape2D_hqtel")
 disabled = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_sweqy")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=326128988]
+libraries/ = SubResource("AnimationLibrary_sweqy")
 
 [connection signal="body_entered" from="Sword" to="." method="_on_sword_body_entered"]
