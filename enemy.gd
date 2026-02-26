@@ -1,6 +1,8 @@
-extends CharacterBody2D
+class_name Enemy extends CharacterBody2D
 
 const bullet = preload("res://bullet.tscn")
+@export var target_distance = 350
+@export var SPEED = 50
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -8,8 +10,17 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _physics_process(delta: float) -> void:
+	var player = get_tree().get_first_node_in_group("Player")
+	if player:
+		var player_pos : Vector2= player.position
+		var close = get_tree().get_first_node_in_group("Player").position.distance_to(position) < target_distance
+		var dir = position.direction_to(player_pos)
+		rotation = dir.angle()
+		velocity = dir * SPEED
+		if close:
+			velocity*=-1
+		move_and_slide()
 
 
 func _on_timer_timeout() -> void:

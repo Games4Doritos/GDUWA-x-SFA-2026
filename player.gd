@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 var speed := 200
-var maxHealth := 2
+var maxHealth := 10
 var health
 
 # Called when the node enters the scene tree for the first time.
