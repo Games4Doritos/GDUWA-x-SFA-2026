@@ -1,0 +1,17 @@
+join male-knight right
+male-knight: Hi \:)
+player: ....
+- Breakdance
+	You bust some moves.
+	He doesn't look impressed...
+- Say hi
+	player: Hi....?
+	male-knight: What is your name?
+	[text_input text="What is your name?" var="name" placeholder="?"]
+	if {name} == "Josh":
+		player: JOSH! REALLY???
+	else:
+		male-knight: Wow... Hi {name}
+- Run
+	YOU RUN AS FAST AS YOU CAN
+	male-knight: oh.... \:(

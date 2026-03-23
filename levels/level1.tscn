@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cbp6b7j7gh6k8" path="res://player.tscn" id="2_61w3m"]
 [ext_resource type="PackedScene" uid="uid://dme6y4v2rjpo" path="res://enemy.tscn" id="3_pdpul"]
 [ext_resource type="PackedScene" uid="uid://do1e6b4pxh8an" path="res://door.tscn" id="4_8hd6v"]
+[ext_resource type="PackedScene" uid="uid://bxy48fktwfqpk" path="res://npc.tscn" id="5_61w3m"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e2o6t"]
 texture = ExtResource("1_ua5ty")
@@ -161,3 +162,6 @@ position = Vector2(386, 323)
 
 [node name="Area2D" parent="." unique_id=444241534 instance=ExtResource("4_8hd6v")]
 position = Vector2(375, 222)
+
+[node name="NPC" parent="." unique_id=1359803365 instance=ExtResource("5_61w3m")]
+position = Vector2(701, 256)
